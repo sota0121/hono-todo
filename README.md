@@ -74,18 +74,20 @@ https://blog.cloudflare.com/debugging-cloudflare-workers
   - Username: `user`
   - Password: `password`
 
-```json
-// Rules
-headers: {
-  "Authorization": "Basic $Base64EncodedUsername:$Base64EncodedPassword"
-}
+```bash
+echo -n "user:password" | base64
+```
 
+```json
 // Example
 headers: {
-  "Authorization": "Basic dXNlcg==:cGFzc3dvcmQ="
+  "Authorization": "Basic bXl1c2VyOm15cGFzc3dvcmQ="
 }
 ```
 
+### For Thunder Client TIPS ( VSCode Extension )
+
+![Basic-Auth-Request-with-Thunder-client](img/image.png)
 
 
 ## Cloudflare Workers and hono TIPS
