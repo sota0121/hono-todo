@@ -9,8 +9,13 @@
  */
 import { Hono } from "hono"
 import { SetupRoutes } from "./routes"
+import { Bindings } from "./bindings"
 
 export interface Env {
+	MY_VARIABLE: string;
+	BASIC_AUTH_USERNAME: string;
+	BASIC_AUTH_PASSWORD: string;
+
 	// Example binding to KV. Learn more at https://developers.cloudflare.com/workers/runtime-apis/kv/
 	// MY_KV_NAMESPACE: KVNamespace;
 	//
@@ -34,9 +39,7 @@ export interface Env {
 // 	},
 // };
 
-
-
-let app = new Hono();
+let app = new Hono<{Bindings: Bindings}>();
 
 app = SetupRoutes(app);
 

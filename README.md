@@ -40,3 +40,59 @@ Using npm as package manager.
 
 Running `npm create cloudflare\@2 -y -- hono-todo --wrangler-defaults`...
 ```
+
+## Debugging
+
+https://blog.cloudflare.com/debugging-cloudflare-workers
+
+1. setup `.vscode/launch.json` to debug the worker.
+2. start `wrangler dev` to run the worker locally.
+3. attach the debugger to the worker. ( with select `Wrangler` in the debug panel. )
+
+```json
+// .vscode/launch.json
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+  "name": "Wrangler",
+  "type": "node",
+  "request": "attach",
+  "port": 8787,
+  "cwd": "/",
+  "resolveSourceMapLocations": null,
+  "attachExistingChildren": false,
+  "autoAttachChildProcesses": false
+    }
+  ]
+}
+```
+
+## API Request with basic authentication
+
+- e.g.
+  - Username: `user`
+  - Password: `password`
+
+```json
+// Rules
+headers: {
+  "Authorization": "Basic $Base64EncodedUsername:$Base64EncodedPassword"
+}
+
+// Example
+headers: {
+  "Authorization": "Basic dXNlcg==:cGFzc3dvcmQ="
+}
+```
+
+
+
+## Cloudflare Workers and hono TIPS
+
+### Environment Variables
+
+- https://zenn.dev/kunimasu/articles/9c69b4b50e1737
+- https://developers.cloudflare.com/workers/configuration/environment-variables/
+- https://hono.dev/getting-started/cloudflare-workers#bindings
+

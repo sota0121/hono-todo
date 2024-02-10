@@ -5,7 +5,10 @@
   "scripts": {
     "deploy": "wrangler deploy",
     "dev": "wrangler dev",
-    "start": "wrangler dev"
+		"dev:dev": "wrangler dev --env dev",
+    "start": "wrangler dev",
+		"start:dev": "wrangler dev --env dev",
+		"start:stg": "wrangler dev --env stg"
   },
   "devDependencies": {
     "@cloudflare/workers-types": "^4.20240208.0",
